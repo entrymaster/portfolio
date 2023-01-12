@@ -10,14 +10,14 @@ export const Hero = (props: Props) => {
     const [text, count] = useTypewriter({
         words: [
             "Hi, I'm Ayush Srivastava",
-            "<Developer />",
+            "<> Loves to Code </>",
             "Tech Enthusiast"
         ],
         loop: true,
         delaySpeed: 2000,
     })
     return (
-        <div className='h-screen flex flex-col lg:pt-36 lg:-space-y-[65px] items-center justify-center
+        <div className='h-screen flex flex-col lg:pt-16 lg:-space-y-[65px] items-center justify-center
     text-center overflow-hidden'>
             <BackgroundCircles />
             <div className='relative -top-[36px] lg:top-[10px]'>
