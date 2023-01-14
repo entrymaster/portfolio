@@ -29,7 +29,7 @@ export const About = (props: Props) => {
         <div className='space-y-10 px-0 md:px-10'>
             <h4 className='text-4xl font-semibold'>Here is a <span className='underline decoration-[#F7AB0A]/50'>little</span> background</h4>
             <p className='text-base'>Hardworking College Student with excellent problem-solving skills and ability to perform well in a team.
-                I'm passionate about writing efficient code and learning new technologies.</p>
+                I&apos;m passionate about writing efficient code and learning new technologies.</p>
         </div> 
     </motion.div>
   )
