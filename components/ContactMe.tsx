@@ -1,9 +1,23 @@
 import React from 'react'
 import { EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid'
+import { useForm, SubmitHandler } from "react-hook-form";
 
 type Props = {}
+type Inputs = {
+    name: string,
+    email: string,
+    subject: string,
+    message: string,
+};
 
 export const ContactMe = (props: Props) => {
+
+    const { register, handleSubmit } = useForm<Inputs>();
+    const onSubmit: SubmitHandler<Inputs> = data => {
+        window.location.href = `mailto:ayushsrivastavaayu@gmail.com?subject=${data.subject}&body=Hi, I'm ${data.name}. ${data.message}
+        (${data.email})`
+    };
+
   return (
     <div className='h-screen flex relative text-center md:text-left flex-col md:flex-row
     justify-evenly mx-auto items-center px-10'>
@@ -29,13 +43,13 @@ export const ContactMe = (props: Props) => {
                     <p className='text-[20px]'>Lucknow, India</p>
                 </div>
             </div>
-            <form className='flex flex-col space-y-2 w-full mx-auto'>
+            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-2 w-full mx-auto'>
                 <div className='flex md:space-x-2 flex-col md:flex-row'>
-                    <input placeholder='Name' className='contactInput mb-2 md:mb-0' type="text"/>
-                    <input placeholder='Email' className='contactInput' type="text" />
+                    <input {...register('name')} placeholder='Name' className='contactInput mb-2 md:mb-0' type="text"/>
+                    <input {...register('email')} placeholder='Email' className='contactInput' type="email" />
                 </div>
-                <input placeholder='Subject' className='contactInput' type="text" />
-                <textarea placeholder='Message' className='contactInput' />
+                <input {...register('subject')} placeholder='Subject' className='contactInput' type="text" />
+                <textarea {...register('message')} placeholder='Message' className='contactInput' />
                 <button type='submit' className='bg-[#F7AB0A] py-4 px-10 rounded-md text-black font-bold'>Submit</button>
             </form>
         </div>
