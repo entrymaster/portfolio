@@ -19,9 +19,9 @@ export const ContactMe = (props: Props) => {
     };
 
   return (
-    <div className='md:h-screen h-[600px] flex relative text-center md:text-left flex-col md:flex-row
+    <div className='h-screen flex relative text-center md:text-left flex-col md:flex-row
     justify-evenly mx-auto items-center px-10'>
-        <h3 className='absolute md:top-20 -top-5 ml-5 uppercase tracking-[20px] text-gray-500 text-2xl'>Contact</h3>
+        <h3 className='absolute top-20 ml-5 uppercase tracking-[20px] text-gray-500 text-2xl'>Contact</h3>
         <div className='flex flex-col space-y-3 md:space-y-5'>
             <h4 className='text-[20px] font-semibold text-center'>
                 I have got what you need. <br className='md:hidden' />
