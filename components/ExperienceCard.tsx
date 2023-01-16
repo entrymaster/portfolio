@@ -8,7 +8,6 @@ type Props = {
 }
 
 const ExperienceCard = ({ experience }: Props) => {
-    console.log(experience)
   return (
     <article className='flex flex-col self-end rounded-lg items-center space-y-7 flex-shrink-0
     w-[330px] h-fit md:w-[600px] snap-center bg-[#292929] p-[20px] md:opacity-40 hover:opacity-100 cursor-pointer transition-opacity duration-200 overflow-hidden'>
