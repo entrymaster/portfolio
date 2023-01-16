@@ -1,16 +1,18 @@
 import { motion } from 'framer-motion';
 import React from 'react'
+import { urlFor } from '../sanity';
+import { Project } from '../typings';
 
-type Props = {}
+type Props = {
+  projects: Project[];
+}
 
-const projects = [1,2,3,4,5];
-
-export const Projects = (props: Props) => {
+export const Projects = ({ projects }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
+      transition={{ duration: 1.2 }}
       className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full
       justify-evenly mx-auto items-center z-0'
     >
@@ -32,12 +34,12 @@ export const Projects = (props: Props) => {
                   className='md:w-[480px] w-[300px]'
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
-                  src="https://cdn.sanity.io/images/ltuexkre/production/af7ca99b5a796d0698cf9121a4a0795b5022b6be-666x375.png"
+                  src={urlFor(project?.image).url()}
                   alt="project" 
                 />
                 <div className='space-y-10 px-5 md:px-10 max-w-5xl'>
-                  <h4 className='text-2xl md:text-3xl font-semibold text-center'>Crop Recommendation System</h4>
-                  <h6 className='text-center md:text-left'>Netflix 2.0 app that has a Log In and Log Out Authentication with Google. It has a beautiful Home Screen with all the movies looking just like Netflix. There is also a subscription page where you can see your active monthly subscription. We also use Stripe Payments for the monthly Netflix Subscriptions!</h6>
+                  <h4 className='text-2xl md:text-3xl font-semibold text-center'>{project?.title}</h4>
+                  <h6 className='text-center md:text-left'>{project?.summary}</h6>
                 </div>
               </div>
             ))

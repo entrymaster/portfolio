@@ -1,9 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Experience } from '../typings'
+import { urlFor } from '../sanity'
 
-type Props = {}
+type Props = {
+    experience: Experience
+}
 
-const ExperienceCard = (props: Props) => {
+const ExperienceCard = ({ experience }: Props) => {
+    console.log(experience)
   return (
     <article className='flex flex-col self-end rounded-lg items-center space-y-7 flex-shrink-0
     w-[330px] h-fit md:w-[600px] snap-center bg-[#292929] p-[20px] md:opacity-40 hover:opacity-100 cursor-pointer transition-opacity duration-200 overflow-hidden'>
@@ -17,33 +22,29 @@ const ExperienceCard = (props: Props) => {
             viewport={{once:true}}
             className='w-24 h-24 rounded-full xl:w-[150px] xl:h-[150px]
             object-cover object-center'
-            src='https://cdn.sanity.io/images/ltuexkre/production/9498d51c38123b1af0bdf52739ed7e4afe287244-3083x3222.jpg'
+            src={urlFor(experience?.companyImage).url()}
             alt='company logo'
         />
         <div className='px-0 md:px-10'>
-            <h4 className='text-2xl md:text-3xl font-light'>Mobile Application Engineer</h4>
-            <p className='font-semibold text-1xl md:text-2xl mt-1'>BINARYVEDA</p>
+            <h4 className='text-2xl md:text-3xl font-light'>{experience?.jobTitle}</h4>
+            <p className='font-semibold text-1xl md:text-2xl mt-1'>{experience?.company}</p>
             <div className='flex space-x-2 my-2'>
-                <img
-                    className='h-10 w-10 rounded-full'
-                    src='https://cdn-icons-png.flaticon.com/512/5968/5968242.png'
-                />
-                <img
-                    className='h-10 w-10 rounded-full'
-                    src='https://cdn-icons-png.flaticon.com/512/5968/5968242.png'
-                />
-                <img
-                    className='h-10 w-10 rounded-full'
-                    src='https://cdn-icons-png.flaticon.com/512/5968/5968242.png'
-                />
+                {
+                    experience.technologies.map((technology) => (
+                        <img
+                            key={technology._id}
+                            className='h-10 w-10 rounded-full'
+                            src={urlFor(technology.image).url()}
+                        />
+                    ))
+                }
             </div>
-            <p className='uppercase py-5 text-gray-300'>Aug 2022 - Current</p>
+            <p className='uppercase py-5 text-gray-300'>{new Date(experience?.dateStarted).toDateString()} 
+            - {experience.isCurrentWorkingHere ? 'Present' : new Date(experience?.dateEnded).toDateString()}</p>
             <ul className='list-disc space-y-4 ml-5 text-sm'>
-                <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </li>
-                <li>At dolorum vero, nisi excepturi fugiat ipsum et nesciunt  </li>
-                <li>doloribus, neque, enim molestias quos quam oluta tenetur consequatur.</li>
-                <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
-                {/* <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li> */}
+                {experience.points.map((point, index) => (
+                    <li key={index}>{point}</li>
+                ))}
             </ul>
         </div>
     </article>
