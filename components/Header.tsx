@@ -59,8 +59,9 @@ const Header = ({ socials }: Props) => {
                 network='email'
                 fgColor='gray'
                 bgColor='transparent'
+                onClick={()=>window.open('#contact', "_self")}
             />
-            <p className='uppercase hidden md:inline-flex text-sm text-gray-400'>Get In Touch</p>
+            <p onClick={()=>window.open('#contact', "_self")} className='uppercase hidden md:inline-flex text-sm text-gray-400'>Get In Touch</p>
         </motion.div>
     </header>
   )
